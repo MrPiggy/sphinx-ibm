@@ -132,10 +132,11 @@
 									<f:validateLength minimum="3" maximum="3"></f:validateLength>
 								</h:inputText></td>
 						</tr>
+	
 						<tr>
 							<td align="left">Customer Name:</td>
 							<td style="width: 5px">&#160;</td>
-							<td><h:inputText styleClass="inputText" id="custName1" readonly="true">
+							<td><h:inputText styleClass="inputText" id="custName1" readonly="true" value="#{pc_Export.customerMstr.custname}">
 								</h:inputText></td>
 						</tr>
 						<tr>
@@ -166,7 +167,8 @@
 						<tr>
 							<td align="left">Available Space:</td>
 							<td style="width: 5px">&#160;</td>
-							<td><h:inputText styleClass="inputText" id="avaiSpace1" readonly="true">
+							<td><h:inputText styleClass="inputText" id="avaiSpace1" 
+								value="#{pc_Export.customerMstr.availablespace}" readonly="true">
 								</h:inputText></td>
 						</tr>
 					</tbody>

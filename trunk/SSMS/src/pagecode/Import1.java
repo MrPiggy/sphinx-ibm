@@ -18,6 +18,7 @@ import javax.faces.component.html.HtmlForm;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlMessages;
+import com.ibm.jpa.web.JPAFilter;
 
 /**
  * @author db2admin
@@ -39,6 +40,7 @@ public class Import1 extends PageCodeBase {
 	protected HtmlMessages id2messages;
 	protected HtmlInputText custName1;
 	protected HtmlInputText avaiSpace1;
+	private CustomerMstr customerMstr;
 	protected HtmlPanelGrid getGrid1() {
 		if (grid1 == null) {
 			grid1 = (HtmlPanelGrid) findComponentInRoot("grid1");
@@ -94,8 +96,8 @@ public class Import1 extends PageCodeBase {
 			String custid = goodsSpace.getCustid();
 			CustomerMstrManager customerManager = 
 			(CustomerMstrManager)getManagedBean("CustomerMstrManager");
-			CustomerMstr customer = customerManager.findCustomerMstrByCustid(custid);
-			if (customer == null) {
+			customerMstr = customerManager.findCustomerMstrByCustid(custid);
+			if (customerMstr == null) {
 				throw new Exception("Customer ID " + custid + " was not found.");
 			}
 			
@@ -110,17 +112,17 @@ public class Import1 extends PageCodeBase {
 			if(goodsSpace.getSpaceRequired() == 0){
 				throw new Exception("Required Space cannot be ZERO.");
 			}
-			if (goodsSpace.getSpaceRequired() > customer.getAvailablespace()){
+			if (goodsSpace.getSpaceRequired() > customerMstr.getAvailablespace()){
 				throw new Exception("Required Space > Available Space: There is not enough space to import the shipment.");
 			}
 			
 			goodsSpace.setStatus("In");
 			
-			int change = customer.getAvailablespace() - goodsSpace.getSpaceRequired();
-			customer.setAvailablespace(change);
+			int change = customerMstr.getAvailablespace() - goodsSpace.getSpaceRequired();
+			customerMstr.setAvailablespace(change);
 			//customerManager.updateCustomerMstr(customer);
 			
-			goodsSpaceManager.createGoodsSpace(goodsSpace, customer);
+			goodsSpaceManager.createGoodsSpace(goodsSpace, customerMstr);
 		} catch (Exception e) {
 			getFacesContext().addMessage("custid", new 
 					FacesMessage(e.getMessage()));
@@ -191,6 +193,18 @@ public class Import1 extends PageCodeBase {
 			avaiSpace1 = (HtmlInputText) findComponentInRoot("avaiSpace1");
 		}
 		return avaiSpace1;
+	}
+
+	@JPA(targetEntityManager = ssms.entities.controller.CustomerMstrManager.class, targetAction = JPA.ACTION_TYPE.FIND)
+	@JPAFilter(name = "custid", value = "#{param.custid}")
+	public CustomerMstr getCustomerMstr() {
+		if (customerMstr == null) {
+			CustomerMstrManager customerMstrManager = (CustomerMstrManager) getManagedBean("CustomerMstrManager");
+			String custid = (String) resolveParam("customerMstr_custid",
+					"#{param.custid}", "java.lang.String");
+			customerMstr = customerMstrManager.findCustomerMstrByCustid(custid);
+		}
+		return customerMstr;
 	}
 
 }

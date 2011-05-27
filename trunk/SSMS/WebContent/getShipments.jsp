@@ -9,9 +9,13 @@
     List<String> ids = db.getShipmentIDs(query);
  	
     Iterator<String> iterator = ids.iterator();
-    
+    out.print("[");
     while(iterator.hasNext()) {
         String id = (String)iterator.next();
-        out.print(id + " ");
+        if (iterator.hasNext())
+        	out.print("\"" + id + "\",");
+        else
+        	out.print("\"" + id + "\"");
     }
+    out.print("]");
 %>

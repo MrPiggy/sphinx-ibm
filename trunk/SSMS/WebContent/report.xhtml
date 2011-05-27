@@ -32,7 +32,7 @@
 			return row[0] + " (id: " + row[1] + ")";
 		}
 		$(document).ready(function() {
-			$("#subview1-form1-custid1").autocomplete("faces/getIDs.jsp");
+			$("#subview1-form1-custid1").autocomplete("faces/getIDs.jsp", {autoFill:true});
 			$("#subview1-form1-custid1").blur(function() {
 			  if($(this).val().length == 0)
 			  	$(this).toggleClass('red');
