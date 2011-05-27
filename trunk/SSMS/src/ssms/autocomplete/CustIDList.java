@@ -71,6 +71,38 @@ public class CustIDList extends PageCodeBase{
         return name;
     }
     
+    public String getNumber(String id) {
+    	String number = "";
+    	try {
+    		GoodsSpaceManager goodsSpaceManager = (GoodsSpaceManager) getManagedBean("GoodsSpaceManager");
+			GoodsSpace goodsSpace = goodsSpaceManager.findGoodsSpaceByShipmentid(id);
+			if (goodsSpace == null) {
+				throw new Exception("Unable to get shipment.");
+			}
+		
+			number = Integer.toString(goodsSpace.getNumber());
+		} catch (Exception e) {
+			return null;
+		}
+        return number;
+    }
+    
+    public String getRequired(String id) {
+    	String spaceRequired = "";
+    	try {
+    		GoodsSpaceManager goodsSpaceManager = (GoodsSpaceManager) getManagedBean("GoodsSpaceManager");
+			GoodsSpace goodsSpace = goodsSpaceManager.findGoodsSpaceByShipmentid(id);
+			if (goodsSpace == null) {
+				throw new Exception("Unable to get shipment.");
+			}
+		
+			spaceRequired = Integer.toString(goodsSpace.getSpaceRequired());
+		} catch (Exception e) {
+			return null;
+		}
+        return spaceRequired;
+    }
+    
     public List<String> getShipmentIDs(String id){
     	shipmentIDs = new ArrayList<String>();
     	try {
@@ -87,5 +119,19 @@ public class CustIDList extends PageCodeBase{
 			return null;
 		}
         return shipmentIDs;
+    }
+    
+    public List<GoodsSpace> getData(String id){
+    	shipmentIDs = new ArrayList<String>();
+    	try {
+    		GoodsSpaceManager goodsSpaceManager = (GoodsSpaceManager) getManagedBean("GoodsSpaceManager");
+			goodsSpaces = goodsSpaceManager.getGoodsSpace(id);
+			if (goodsSpaces == null) {
+				throw new Exception("Unable to get shipment list.");
+			}
+		} catch (Exception e) {
+			return null;
+		}
+        return goodsSpaces;
     }
 }
