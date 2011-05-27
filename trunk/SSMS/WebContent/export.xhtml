@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="js/ddsmoothmenu.css" />
 	<link rel="stylesheet" type="text/css" href="js/ddsmoothmenu-v.css" />
 	<script type="text/javascript" src="js/jquery-latest.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	<script type='text/javascript' src="js/jquery.autocomplete.js"></script>
 	<script type="text/javascript" src="js/ddsmoothmenu.js"></script>
 	<script type="text/javascript">
@@ -55,13 +56,7 @@
 					dataType: "text",
 					success : function (data) {
 						$("#subview1-form1-shipmentid1").autocompleteArray(
-					       eval(data),
-					       {
-					        minChars:0,
-					        validSelection: true,
-					       	autoFill: true,
-					       	maxItemsToShow:10
-					       }
+					       eval(data),{autoFill: true}
 					    );
 					}
 				});
@@ -76,8 +71,21 @@
 			$('#subview1-form1-shipmentid1').blur(function() {
 			  if($(this).val().length == 0)
 			  	$(this).toggleClass('red');
-			  else
+			  else{
 			  	$(this).toggleClass('normal');
+			  	$.ajax({
+					url : "faces/getNumber.jsp?id=" + $(this).val(),
+					success : function (data) {
+					$("#subview1-form1-number1").val(data);
+					}
+				});
+				$.ajax({
+					url : "faces/getSpaceRequired.jsp?id=" + $(this).val(),
+					success : function (data) {
+					$("#subview1-form1-spaceRequired1").val(data);
+					}
+				});
+			  }
 			});
 		});
 		ddsmoothmenu.init({
