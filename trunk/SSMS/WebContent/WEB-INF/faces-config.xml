@@ -15,11 +15,6 @@
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>pc_Ssmslayout1</managed-bean-name>
-		<managed-bean-class>pagecode.layout.Ssmslayout1</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
 		<managed-bean-name>pc_Report</managed-bean-name>
 		<managed-bean-class>pagecode.Report</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
