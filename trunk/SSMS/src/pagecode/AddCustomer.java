@@ -15,6 +15,7 @@ import javax.faces.component.html.HtmlForm;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlMessages;
+import javax.faces.context.FacesContext;
 
 /**
  * @author ManMan
@@ -36,7 +37,6 @@ public class AddCustomer extends PageCodeBase {
 	protected HtmlInputText availablespace1;
 	protected HtmlCommandButton id1;
 	protected HtmlMessages id2messages;
-
 	protected HtmlPanelGrid getGrid1() {
 		if (grid1 == null) {
 			grid1 = (HtmlPanelGrid) findComponentInRoot("grid1");
@@ -89,10 +89,14 @@ public class AddCustomer extends PageCodeBase {
 				throw new Exception("Alotted Space and Available Space do not match.");
 			}
 			customerMstrManager.createCustomerMstr(customerMstr);
+			
+			FacesContext.getCurrentInstance().getExternalContext().redirect("addCustomerResult.html?custid=" + custid);
 		} catch (Exception e) {
 			getFacesContext().addMessage("custid", new 
 					FacesMessage(e.getMessage()));
+			return "error";
 		}
+		
 		return "add";
 	}
 

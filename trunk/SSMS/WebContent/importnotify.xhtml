@@ -14,7 +14,6 @@
 <link rel="stylesheet" type="text/css" href="js/ddsmoothmenu-v.css" />
 <script type="text/javascript" src="js/jquery-latest.js"></script>
 <script type="text/javascript" src="js/ddsmoothmenu.js"></script>
-<script type="text/javascript" src="js/jquery-latest.js"></script>
 <script type="text/javascript">
 ddsmoothmenu.init({
 	mainmenuid: "smoothmenu1", //menu DIV id
@@ -24,8 +23,6 @@ ddsmoothmenu.init({
 	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
 })
 </script>
-	<link rel="stylesheet" type="text/css" title="Style"
-		href="theme/stylesheet.css" />
 </h:head>
 <h:body>
 <div id="container"><h:panelGrid styleClass="panelGrid" id="grid1" columns="1"><h:graphicImage styleClass="graphicImage" id="image1" name="ssms.jpg"
@@ -56,7 +53,6 @@ ddsmoothmenu.init({
 	<f:subview id="subview1">
 		<ui:insert name="pageContent">
 			<h:outputText styleClass="outputText" id="text2" value="Successfully import shipment."></h:outputText>
-			<h:messages styleClass="messages" id="id2messages"></h:messages>
 		</ui:insert>
 	</f:subview>
 	</div>
