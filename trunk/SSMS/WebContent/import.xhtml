@@ -52,18 +52,8 @@
 				});
 			  }
 			});
-			$('#subview1-form1-spaceRequired1').focus(function() {
-			  $(this).val('');
-			});
 			$('#subview1-form1-number1').focus(function() {
 			  $(this).val('');
-			});
-			$('#subview1-form1-spaceRequired1').blur(function() {
-			  var val = $(this).val();
-			  if(val == '0' || val.length == 0)
-			  	$(this).toggleClass('red');
-			  else
-			  	$(this).toggleClass('normal');
 			});
 			$('#subview1-form1-shipmentid1').blur(function() {
 			  if($(this).val().length == 0)
@@ -72,11 +62,12 @@
 			  	$(this).toggleClass('normal');
 			});
 			$('#subview1-form1-number1').blur(function() {
-			  var val = $(this).val();
-			  if(val.length == 0 || val == '0')
+			  var value = $(this).val();
+			  if(value.length == 0 || value == '0')
 			  	$(this).toggleClass('red');
 			  else
 			  	$(this).toggleClass('normal');
+			  $('#subview1-form1-spaceRequired1').val(value);	
 			});
 		});
 		function autoFill(custid) {
