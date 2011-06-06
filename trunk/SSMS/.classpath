@@ -23,8 +23,6 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/workspace/SSMS/jboss-seam-mail.jar"/>
-	<classpathentry kind="lib" path="D:/workspace/SSMS/jboss-seam.jar"/>
 	<classpathentry kind="lib" path="D:/workspace/SSMS/mail.jar"/>
 	<classpathentry kind="lib" path="D:/workspace/SSMS/activation.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>

@@ -23,6 +23,7 @@
     <propertySet xmi:id="J2EEResourcePropertySet_1306039601922"/>
     <deploymentDescriptor xmi:id="Connector_1306039601922" displayName="WS_RdbResourceAdapter" vendorName="IBM" specVersion="1.5" eisType="RRA" version="6.0">
       <icons xmi:id="IconType_1306039601922" smallIcon="rdb_small_icon.jpg" largeIcon="rdb_large_icon.jpg"/>
+      <displayNames xmi:id="DisplayName_1307333282869" value="WS_RdbResourceAdapter"/>
       <displayNames xmi:id="DisplayName_1307322662490" value="WS_RdbResourceAdapter"/>
       <displayNames xmi:id="DisplayName_1306514928052" value="WS_RdbResourceAdapter"/>
       <displayNames xmi:id="DisplayName_1306514692107" value="WS_RdbResourceAdapter"/>
@@ -79,6 +80,7 @@
     <classpath>${WAS_INSTALL_ROOT}/installedConnectors/sib.api.jmsra.rar</classpath>
     <propertySet xmi:id="J2EEResourcePropertySet_1306039601923"/>
     <deploymentDescriptor xmi:id="Connector_1306039601924" displayName="WebSphere Default Messaging Provider" vendorName="IBM" specVersion="1.5" eisType="JMS Provider" version="0.3">
+      <displayNames xmi:id="DisplayName_1307333282870" value="WebSphere Default Messaging Provider"/>
       <displayNames xmi:id="DisplayName_1307322662491" value="WebSphere Default Messaging Provider"/>
       <displayNames xmi:id="DisplayName_1306514928053" value="WebSphere Default Messaging Provider"/>
       <displayNames xmi:id="DisplayName_1306514692108" value="WebSphere Default Messaging Provider"/>
@@ -337,6 +339,7 @@
       <resourceProperties xmi:id="J2EEResourceProperty_1306039602046" name="traceLevel" type="int" value="3" description="traceLevel" required="false"/>
     </propertySet>
     <deploymentDescriptor xmi:id="Connector_1306039601943" displayName="WebSphere MQ Resource Adapter" vendorName="International Business Machines Corporation (&quot;IBM&quot;)." specVersion="1.5" eisType="Java Message Service" version="7.0.1.3-k701-103-100812">
+      <displayNames xmi:id="DisplayName_1307333282871" value="WebSphere MQ Resource Adapter"/>
       <displayNames xmi:id="DisplayName_1307322662497" value="WebSphere MQ Resource Adapter"/>
       <displayNames xmi:id="DisplayName_1306514928057" value="WebSphere MQ Resource Adapter"/>
       <displayNames xmi:id="DisplayName_1306514692109" value="WebSphere MQ Resource Adapter"/>
