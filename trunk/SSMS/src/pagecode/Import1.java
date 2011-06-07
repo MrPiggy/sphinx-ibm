@@ -106,12 +106,6 @@ public class Import1 extends PageCodeBase {
 			if( temp != null){
 				throw new Exception("Shipment ID " + goodsSpace.getShipmentid() + " already existed.");
 			}
-			if(goodsSpace.getNumber() == 0){
-				throw new Exception("No. units cannot be ZERO.");
-			}
-			if(goodsSpace.getSpaceRequired() == 0){
-				throw new Exception("Required Space cannot be ZERO.");
-			}
 			if (goodsSpace.getSpaceRequired() > customerMstr.getAvailablespace()){
 				throw new Exception("Required Space > Available Space: There is not enough space to import the shipment.");
 			}
@@ -120,7 +114,6 @@ public class Import1 extends PageCodeBase {
 			
 			int change = customerMstr.getAvailablespace() - goodsSpace.getSpaceRequired();
 			customerMstr.setAvailablespace(change);
-			//customerManager.updateCustomerMstr(customer);
 			
 			goodsSpaceManager.createGoodsSpace(goodsSpace, customerMstr);
 		} catch (Exception e) {

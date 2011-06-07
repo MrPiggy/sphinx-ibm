@@ -87,10 +87,8 @@
 							<td align="left">Enter CustomerID:</td>
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="custid1"
-									value="#{sessionScope.custid}" requiredMessage="Customer ID is required." converterMessage="Conversion Error." validatorMessage="Customer ID is invalid.">
-									<f:validateRequired></f:validateRequired>
-									<f:validateLength maximum="3"></f:validateLength>
-									<f:ajax event="valueChange" execute="@form" listener="#{pc_Report.handleAjax}"></f:ajax>
+									value="#{sessionScope.custid}">
+					<f:validator validatorId="customerValidator"></f:validator>
 								</h:inputText></td>
 						</tr>
 					</tbody>

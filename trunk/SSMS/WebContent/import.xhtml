@@ -120,8 +120,7 @@
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="custid1"
 									value="#{pc_Import1.goodsSpace.custid}" requiredMessage="Customer ID is required." validatorMessage="Customer ID is invalid.">
-									<f:validateRequired></f:validateRequired>
-												<f:validateLength maximum="3"></f:validateLength>
+											<f:validator validatorId="customerValidator"></f:validator>
 											</h:inputText></td>
 						</tr>
 		
@@ -137,18 +136,15 @@
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="shipmentid1"
 									value="#{pc_Import1.goodsSpace.shipmentid}" requiredMessage="Shipment ID is required." validatorMessage="Shipment ID is invalid.">
-									<f:validateRequired></f:validateRequired>
-									<f:validateLength minimum="3" maximum="10"></f:validateLength>
+								<f:validator validatorId="shipmentValidator"></f:validator>
 								</h:inputText></td>
 						</tr>
 						<tr>
 							<td align="left">No. units:</td>
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="number1"
-									value="#{pc_Import1.goodsSpace.number}"
-									requiredMessage="No. units is required."
-									validatorMessage="No. units must be a interger.">
-									<f:validateRequired></f:validateRequired>
+									value="#{pc_Import1.goodsSpace.number}">
+									<f:validator validatorId="nouValidator"></f:validator>
 								</h:inputText>
 							</td>
 						</tr>
@@ -156,11 +152,12 @@
 							<td align="left">Required Space:</td>
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="spaceRequired1"
-									value="#{pc_Import1.goodsSpace.spaceRequired}"
-									requiredMessage="Required Space is required."
-									validatorMessage="Required Space must be a interger.">
-								</h:inputText>
-							</td>
+												value="#{pc_Import1.goodsSpace.spaceRequired}"
+												requiredMessage="Required Space is required."
+												validatorMessage="Required Space must be a interger."
+												disabled="false" readonly="true">
+												<f:validateRequired></f:validateRequired>
+											</h:inputText></td>
 						</tr>
 						<tr>
 							<td align="left">Available Space:</td>

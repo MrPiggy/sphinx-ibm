@@ -129,9 +129,8 @@
 							<td align="left">Customer ID:</td>
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="custid1"
-									value="#{pc_Export.goodsSpace.custid}" requiredMessage="Customer ID is required." validatorMessage="Customer ID is invalid.">
-									<f:validateRequired></f:validateRequired>
-									<f:validateLength maximum="3"></f:validateLength>
+									value="#{pc_Export.goodsSpace.custid}">
+									<f:validator validatorId="customerValidator"></f:validator>
 								</h:inputText></td>
 						</tr>
 	
@@ -145,9 +144,8 @@
 							<td align="left">Shipment ID:</td>
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="shipmentid1"
-									value="#{pc_Export.goodsSpace.shipmentid}" requiredMessage="Shipment ID is required." validatorMessage="Shipment ID is invalid.">
-									<f:validateRequired></f:validateRequired>
-									<f:validateLength minimum="3" maximum="10"></f:validateLength>
+									value="#{pc_Export.goodsSpace.shipmentid}">
+									<f:validator validatorId="shipmentValidator"></f:validator>
 								</h:inputText></td>
 						</tr>
 						<tr>

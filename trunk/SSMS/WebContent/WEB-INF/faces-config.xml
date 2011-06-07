@@ -99,5 +99,16 @@
 			<to-view-id>/addCustomer.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-    
+    <validator>
+    	<validator-id>customerValidator</validator-id>
+    	<validator-class>ssms.validation.CustomerMstrValidation</validator-class>
+    </validator>
+    <validator>
+    	<validator-id>shipmentValidator</validator-id>
+    	<validator-class>ssms.validation.ShipmentValidation</validator-class>
+    </validator>
+    <validator>
+    	<validator-id>nouValidator</validator-id>
+    	<validator-class>ssms.validation.NoOfUnitsValidation</validator-class>
+    </validator>
 </faces-config>
