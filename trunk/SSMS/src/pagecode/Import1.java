@@ -106,6 +106,9 @@ public class Import1 extends PageCodeBase {
 			if( temp != null){
 				throw new Exception("Shipment ID " + goodsSpace.getShipmentid() + " already existed.");
 			}
+			if (goodsSpace.getSpaceRequired() <= 0){
+				throw new Exception("Required Space must be greater than ZERO.");
+			}
 			if (goodsSpace.getSpaceRequired() > customerMstr.getAvailablespace()){
 				throw new Exception("Required Space > Available Space: There is not enough space to import the shipment.");
 			}
