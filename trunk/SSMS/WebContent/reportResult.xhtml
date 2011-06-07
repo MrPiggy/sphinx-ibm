@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- jsf:pagecode language="java" location="/src/pagecode/ReportResult.java" --><!-- /jsf:pagecode -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>SMSMS - Report Result</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" title="Style"
+		href="theme/stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="js/ddsmoothmenu.css" />
+	<link rel="stylesheet" type="text/css" href="js/ddsmoothmenu-v.css" />
+	<script type="text/javascript" src="js/jquery-latest.js"></script>
+	<script type="text/javascript" src="js/ddsmoothmenu.js"></script>
+	<script type="text/javascript" src="js/jquery-latest.js"></script>
+	<script type="text/javascript">
+	ddsmoothmenu.init({
+		mainmenuid: "smoothmenu1", //menu DIV id
+		orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+		classname: 'ddsmoothmenu', //class added to menu's outer DIV
+		//customtheme: ["#1c5a80", "#18374a"],
+		contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+	})
+</script>
+</h:head>
+<h:body>
+<div id="container">
+	<h:panelGrid styleClass="panelGrid" id="grid1">
+			<h:graphicImage styleClass="graphicImage" id="image1" name="ssms.jpg"
+				library="images" width="760" height="51"></h:graphicImage>
+		</h:panelGrid>
+	<div id="smoothmenu1" class="ddsmoothmenu">
+		<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="#">Services</a>
+		  <ul>
+		  <li><a href="import.html">Import Service</a></li>
+		  <li><a href="export.html">Export Service</a></li>
+		  <li><a href="report.html">Report Service</a></li>
+		  </ul>
+		</li>
+		<li><a href="#">Manage</a>
+		  <ul>
+		  <li><a href="addCustomer.html">Add New Customer</a></li>
+		  </ul>
+		</li>
+		<li><a href="contact.html">Contact Us</a></li>
+		</ul>
+	<br style="clear: left" />
+	</div>
+	<hr />
+	<div id="wrapper">
+	<div id="content">
+	<f:subview id="subview1">
+		<ui:insert name="pageContent">
+			<h2>Report Result</h2>
+			<table>
+				<tbody>
+					<tr>
+						<td align="left">Customer ID:</td>
+						<td style="width: 5px">&#160;</td>
+						<td><h:outputText styleClass="outputText" id="custid1"
+								value="#{pc_ReportResult.customerMstr.custid}">
+							</h:outputText></td>
+					</tr>
+					<tr>
+						<td align="left">Customer Name:</td>
+						<td style="width: 5px">&#160;</td>
+						<td><h:outputText styleClass="outputText" id="custname1"
+								value="#{pc_ReportResult.customerMstr.custname}">
+							</h:outputText></td>
+					</tr>
+					<tr>
+						<td align="left">Alotted Space:</td>
+						<td style="width: 5px">&#160;</td>
+						<td><h:outputText styleClass="outputText" id="alottedspace1"
+								value="#{pc_ReportResult.customerMstr.alottedspace}">
+							</h:outputText></td>
+					</tr>
+					<tr>
+						<td align="left">Available Space:</td>
+						<td style="width: 5px">&#160;</td>
+						<td><h:outputText styleClass="outputText"
+								id="availablespace1"
+								value="#{pc_ReportResult.customerMstr.availablespace}">
+							</h:outputText></td>
+					</tr>
+				</tbody>
+			</table>
+			<h:messages styleClass="messages" id="id1messages"></h:messages>
+		</ui:insert>
+	</f:subview>
+		<h3>Shipment List:</h3>
+				<table>
+					<tbody>
+						<tr>
+							<td style="width: 5px">&#160;</td>
+							<td><h:dataTable id="goodsSpaceList1"
+									value="#{pc_ReportResult.goodsSpaceList}"
+									var="vargoodsSpaceList" styleClass="dataTable"
+									headerClass="headerClass" footerClass="footerClass"
+									rowClasses="rowClass1, rowClass2" columnClasses=""
+									border="0" cellpadding="2" cellspacing="0">
+									<h:column id="shipmentid1column">
+										<f:facet name="header">
+											<h:outputText styleClass="outputText" value="Shipment ID"
+												id="shipmentid1text"></h:outputText>
+										</f:facet>
+										<h:outputText styleClass="outputText" id="shipmentid1"
+											value="#{vargoodsSpaceList.shipmentid}">
+										</h:outputText>
+									</h:column>
+									<h:column id="number1column">
+										<f:facet name="header">
+											<h:outputText styleClass="outputText" value="No. units"
+												id="number1text"></h:outputText>
+										</f:facet>
+										<h:outputText styleClass="outputText" id="number1"
+											value="#{vargoodsSpaceList.number}">
+										</h:outputText>
+									</h:column>
+									<h:column id="spaceRequired1column">
+										<f:facet name="header">
+											<h:outputText styleClass="outputText" value="Required Space"
+												id="spaceRequired1text"></h:outputText>
+										</f:facet>
+										<h:outputText styleClass="outputText" id="spaceRequired1"
+											value="#{vargoodsSpaceList.spaceRequired}">
+										</h:outputText>
+									</h:column>
+									<h:column id="status1column">
+										<f:facet name="header">
+											<h:outputText styleClass="outputText" value="Status"
+												id="status1text"></h:outputText>
+										</f:facet>
+										<h:outputText styleClass="outputText" id="status1"
+											value="#{vargoodsSpaceList.status}">
+										</h:outputText>
+									</h:column>
+								</h:dataTable></td>
+						</tr>
+					</tbody>
+				</table>
+				<h:button value="Back" styleClass="button" id="button1" onclick="history.go(-1);return false;"></h:button>
+				<h:messages styleClass="messages" id="id2messages"></h:messages>
+			</div>
+	</div>
+	<div id="footer">
+		<h:outputText styleClass="outputText" id="text1" value="Created by SPHINX, 2011"></h:outputText>
+	</div>
+</div>
+</h:body>
+</html>
