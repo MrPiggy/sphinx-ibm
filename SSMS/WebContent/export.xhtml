@@ -42,13 +42,13 @@
 			  	$.ajax({
 					url : "faces/getName.jsp?id=" + $(this).val(),
 					success : function (data) {
-					$("#subview1-form1-custName1").val(data);
+					$("#subview1-form1-custName1").val(data.trim());
 					}
 				});
 				$.ajax({
 					url : "faces/getSpace.jsp?id=" + $(this).val(),
 					success : function (data) {
-					$("#subview1-form1-avaiSpace1").val(data);
+					$("#subview1-form1-avaiSpace1").val(data.trim());
 					}
 				});
 				$.ajax({
@@ -70,13 +70,15 @@
 			  	$.ajax({
 					url : "faces/getNumber.jsp?id=" + $(this).val(),
 					success : function (data) {
-					$("#subview1-form1-number1").val(data);
+					$("#subview1-form1-number1").val(data.trim());
 					}
 				});
 				$.ajax({
 					url : "faces/getSpaceRequired.jsp?id=" + $(this).val(),
 					success : function (data) {
-					$("#subview1-form1-spaceRequired1").val(data);
+					$("#subview1-form1-spaceRequired1").val(data.trim());
+					var temp = parseInt($("#subview1-form1-avaiSpace1").val()) + parseInt(data);
+					$("#subview1-form1-avaiSpace2").val(temp);
 					}
 				});
 			  }
@@ -169,6 +171,13 @@
 							<td style="width: 5px">&#160;</td>
 							<td><h:inputText styleClass="inputText" id="avaiSpace1" 
 								value="#{pc_Export.customerMstr.availablespace}" readonly="true">
+								</h:inputText></td>
+						</tr>
+						<tr>
+							<td align="left">New Available Space:</td>
+							<td style="width: 5px">&#160;</td>
+							<td><h:inputText styleClass="inputText" id="avaiSpace2" 
+								readonly="true">
 								</h:inputText></td>
 						</tr>
 					</tbody>

@@ -41,13 +41,13 @@
 			  	$.ajax({
 					url : "faces/getName.jsp?id=" + $(this).val(),
 					success : function (data) {
-					$("#subview1-form1-custName1").val(data);
+					$("#subview1-form1-custName1").val(data.trim());
 					}
 				});
 				$.ajax({
 					url : "faces/getSpace.jsp?id=" + $(this).val(),
 					success : function (data) {
-					$("#subview1-form1-avaiSpace1").val(data);
+					$("#subview1-form1-avaiSpace1").val(data.trim());
 					}
 				});
 			  }

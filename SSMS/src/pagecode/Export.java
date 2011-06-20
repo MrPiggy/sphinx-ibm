@@ -42,6 +42,7 @@ public class Export extends PageCodeBase {
 	protected HtmlInputText shipmentid1;
 	protected HtmlInputText avaiSpace1;
 	private CustomerMstr customerMstr;
+	protected HtmlInputText avaiSpace2;
 	protected HtmlPanelGrid getGrid1() {
 		if (grid1 == null) {
 			grid1 = (HtmlPanelGrid) findComponentInRoot("grid1");
@@ -208,6 +209,13 @@ public class Export extends PageCodeBase {
 			customerMstr = customerMstrManager.findCustomerMstrByCustid(custid);
 		}
 		return customerMstr;
+	}
+
+	protected HtmlInputText getAvaiSpace2() {
+		if (avaiSpace2 == null) {
+			avaiSpace2 = (HtmlInputText) findComponentInRoot("avaiSpace2");
+		}
+		return avaiSpace2;
 	}
 
 }
