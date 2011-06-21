@@ -17,12 +17,16 @@ import ssms.entities.CustomerMstr;
 import ssms.entities.controller.CustomerMstrManager;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author db2admin
  *
  */
 public class Report extends PageCodeBase {
 
+	private static final Logger logger = Logger.getLogger(Report.class);
+	
 	protected HtmlPanelGrid grid1;
 	protected HtmlGraphicImage image1;
 	protected UINamingContainer subview1;
@@ -88,6 +92,7 @@ public class Report extends PageCodeBase {
 	}
 	
 	public String doReportAction() {
+		logger.info("Get report...");
 		try {
 			String custid = (String) getSessionScope().get("custid");
 			System.out.println("Report for CustID: " + custid);
@@ -97,8 +102,10 @@ public class Report extends PageCodeBase {
 			if (customer == null) {
 				throw new Exception("Customer ID " + custid + " was not found.");
 			}
+			logger.info("Reported to " + custid);
 			return "report";
 		} catch (Exception e) {
+			logger.error("Cannot report caused by ", e);
 			getFacesContext().addMessage("custid", new 
 					FacesMessage(e.getMessage()));
 					return null;

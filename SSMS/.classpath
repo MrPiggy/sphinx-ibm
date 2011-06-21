@@ -25,5 +25,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="activation.jar"/>
 	<classpathentry kind="lib" path="mail.jar"/>
+	<classpathentry kind="lib" path="D:/sphinx-ibm/SSMS/log4j-1.2.16.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

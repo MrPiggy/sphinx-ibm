@@ -17,12 +17,16 @@ import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlMessages;
 import javax.faces.context.FacesContext;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author ManMan
  *
  */
 public class AddCustomer extends PageCodeBase {
 
+	private static final Logger logger = Logger.getLogger(AddCustomer.class);
+	
 	protected HtmlPanelGrid grid1;
 	protected HtmlGraphicImage image1;
 	protected UINamingContainer subview1;
@@ -78,6 +82,7 @@ public class AddCustomer extends PageCodeBase {
 	 *  @action id=customerMstr
 	 */
 	public String createCustomerMstrAction() {
+		logger.info("Adding new customer...");
 		CustomerMstrManager customerMstrManager = (CustomerMstrManager) getManagedBean("CustomerMstrManager");
 		try {
 			String custid = customerMstr.getCustid();
@@ -89,9 +94,10 @@ public class AddCustomer extends PageCodeBase {
 				throw new Exception("Alotted Space and Available Space do not match.");
 			}
 			customerMstrManager.createCustomerMstr(customerMstr);
-			
+			logger.info("Customer added " + custid);
 			FacesContext.getCurrentInstance().getExternalContext().redirect("addCustomerResult.html?custid=" + custid);
 		} catch (Exception e) {
+			logger.error("Cannot add customer caused by ", e);
 			getFacesContext().addMessage("custid", new 
 					FacesMessage(e.getMessage()));
 			return "error";
