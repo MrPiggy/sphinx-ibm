@@ -18,6 +18,9 @@ import javax.faces.component.html.HtmlForm;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlMessages;
+
+import org.apache.log4j.Logger;
+
 import com.ibm.jpa.web.JPAFilter;
 
 /**
@@ -26,6 +29,8 @@ import com.ibm.jpa.web.JPAFilter;
  */
 public class Import1 extends PageCodeBase {
 
+	private static final Logger logger = Logger.getLogger(Import1.class);
+	
 	protected HtmlPanelGrid grid1;
 	protected HtmlGraphicImage image1;
 	protected UINamingContainer subview1;
@@ -83,11 +88,14 @@ public class Import1 extends PageCodeBase {
 	 */
 	public String createGoodsSpaceAction() {
 		String result = "";
+		logger.info("Starting import...");
 		try {
 			result = doValidateAction();
 		} catch (Exception e) {
-			logException(e);
+			//logException(e);
+			logger.error("Cannot import shipment caused by: ", e);
 		}
+		logger.info("Imported: " + goodsSpace.getShipmentid());
 		return result;
 	}
 	

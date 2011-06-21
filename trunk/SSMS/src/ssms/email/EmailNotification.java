@@ -15,11 +15,14 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.log4j.Logger;
+
 public class EmailNotification {  
     private CustomerMstr customerMstr;
     private GoodsSpace goodsSpace;
   
     private static final String DATE_FORMAT_NOW = "MM/dd/yyyy hh:mm";
+    private static final Logger logger = Logger.getLogger(EmailNotification.class);
     
     public void sendEmail(){
 		Properties props = new Properties();
@@ -29,7 +32,8 @@ public class EmailNotification {
 				"javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
- 
+		
+		logger.info("Session initializing...");
 		Session session = Session.getDefaultInstance(props,
 			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
@@ -52,8 +56,11 @@ public class EmailNotification {
  
 			Transport.send(message); 
 		} catch (MessagingException e) {
+			logger.error("Cannot send email: " + customerMstr.getCustemail());
+			logger.error("Error in sending email: ", e);
 			throw new RuntimeException(e);
 		}
+		logger.info("Email sent successfully.");
       }
 
 	public CustomerMstr getCustomerMstr() {

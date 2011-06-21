@@ -19,6 +19,9 @@ import javax.faces.component.html.HtmlForm;
 import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.component.html.HtmlMessages;
+
+import org.apache.log4j.Logger;
+
 import com.ibm.jpa.web.JPAFilter;
 
 /**
@@ -27,6 +30,8 @@ import com.ibm.jpa.web.JPAFilter;
  */
 public class Export extends PageCodeBase {
 
+	private static final Logger logger = Logger.getLogger(Export.class);
+	
 	protected HtmlPanelGrid grid1;
 	protected HtmlGraphicImage image1;
 	protected UINamingContainer subview1;
@@ -85,11 +90,14 @@ public class Export extends PageCodeBase {
 	 */
 	public String exportGoodsSpaceAction() {
 		String result = "";
+		logger.info("Begin exporting...");
 		try {
 			result = doValidateAction();
 		} catch (Exception e) {
-			logException(e);
+			//logException(e);
+			logger.error("Cannot export shipment caused by: ", e);
 		}
+		logger.info("Exported: " + goodsSpace.getShipmentid());
 		return result;
 	}
 	
